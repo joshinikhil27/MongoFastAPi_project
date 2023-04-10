@@ -1,9 +1,17 @@
-FROM python:3.7
+FROM python:3.10.5
 
-RUN pip install fastapi uvicorn pymongo
+COPY . /usr
 
-EXPOSE 8000
+WORKDIR /usr
 
-COPY ./PY_MONGO /app
+ADD requirements.txt /usr
 
-CMD ["uvicorn", "app.index:app", "--host=0.0.0.0", "--port=8000", "--reload"]
+# create and activate virtual environment
+RUN python -m venv venv
+RUN . venv/bin/activate
+
+# install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# run the application
+CMD ["uvicorn", "index:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
