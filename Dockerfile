@@ -10,7 +10,7 @@ ADD requirements.txt /usr
 RUN python -m venv venv
 RUN . venv/bin/activate
 RUN pip install --upgrade bson
-
+RUN pip install pymongo[srv]
 
 # install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
