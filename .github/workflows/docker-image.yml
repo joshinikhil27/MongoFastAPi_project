@@ -5,8 +5,9 @@ on:
     branches: [main]
 
 env:
-  DOCKERHUB_USERNAME: 9545328373
-  IMAGE_NAME: final
+  DOCKERHUB_USERNAME: joshinikhil27
+  IMAGE_NAME: fastapi_github_actions
+  DOCKERHUB_PASSWORD: Docker@123
 
 jobs:
   build-and-push:
@@ -20,7 +21,7 @@ jobs:
       uses: docker/login-action@v1
       with:
         username: ${{ env.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        password: ${{ env.DOCKERHUB_PASSWORD }}
 
     - name: Build Docker image
       uses: docker/build-push-action@v2
