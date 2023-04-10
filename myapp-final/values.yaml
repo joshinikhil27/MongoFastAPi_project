@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: 9545328373/final
+  repository: joshinikhil27/fastapi_github_actions
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
