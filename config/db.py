@@ -1,2 +1,2 @@
 from pymongo import MongoClient
-connection = MongoClient('mongodb+srv://root:mongodbpassword@cluster0.nuuitgb.mongodb.net')
+connection = MongoClient('mongodb://rootuser:password123@docdb-2023-04-05-18-03-25.cluster-c4z3dvcijoaa.us-east-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false')
