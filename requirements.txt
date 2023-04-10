@@ -3,3 +3,4 @@ pymongo==4.0.1
 pydantic==1.8.2
 uvicorn==0.15.0
 bson==0.5.10
+dnspython==2.3.0
