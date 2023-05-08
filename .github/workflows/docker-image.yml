@@ -31,19 +31,31 @@ jobs:
         tags: ${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
         dockerfile: Dockerfile
         
-    - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
+    - name: Run Checkov action
+      id: checkov
+      uses: bridgecrewio/checkov-action@master
       with:
-          image-ref: '${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest'
-          format: 'template'
-          template: '@/contrib/sarif.tpl'
-          output: 'trivy-results.sarif'
-          severity: 'CRITICAL,HIGH'
+        quiet: true # optional: display only failed checks
+        soft_fail: true # optional: do not return an error code if there are failed checks
+        log_level: DEBUG # optional: set log level. Default WARNING
+        docker_image: ${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest # define the name of the image to scan
+        dockerfile_path: . # path to the Dockerfile
+#         container_user: 1000 # optional: Define what UID and / or what GID to run the container under to prevent permission issues
+#         api-key: ${{ secrets.BC_API_KEY }} # Bridgecrew API key stored as a GitHub secret
+        
+#     - name: Run Trivy vulnerability scanner
+#       uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
+#       with:
+#           image-ref: '${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest'
+#           format: 'template'
+#           template: '@/contrib/sarif.tpl'
+#           output: 'trivy-results.sarif'
+#           severity: 'CRITICAL,HIGH'
 
-    - name: Upload Trivy scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-          sarif_file: 'trivy-results.sarif'
+#     - name: Upload Trivy scan results to GitHub Security tab
+#       uses: github/codeql-action/upload-sarif@v2
+#       with:
+#           sarif_file: 'trivy-results.sarif'
         
     
 
