@@ -6,7 +6,7 @@ on:
 
 env:
   DOCKERHUB_USERNAME: joshinikhil27
-  IMAGE_NAME: fastapi_github_actions
+  IMAGE_NAME: docker_image_fast_api
   DOCKERHUB_PASSWORD: Docker@123
 
 jobs:
