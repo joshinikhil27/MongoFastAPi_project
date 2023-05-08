@@ -35,8 +35,8 @@ jobs:
       uses: aquasecurity/trivy-action@master
       with:
           image-ref: '${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
+          format: 'table'
+          output: 'trivy-results.txt'
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
@@ -44,7 +44,7 @@ jobs:
     - name: Upload Trivy scan results to GitHub Security tab
       uses: github/codeql-action/upload-sarif@v2
       with:
-          sarif_file: 'trivy-results.sarif'
+          sarif_file: 'trivy-results.txt'
           
 #     - name: Docker Vulnerability Scan With Phonito Security
 #         # You may pin to the exact commit or the version.
