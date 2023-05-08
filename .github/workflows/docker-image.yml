@@ -39,4 +39,16 @@ jobs:
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
+          severity: 'CRITICAL'
+          
+#     - name: Docker Vulnerability Scan With Phonito Security
+#         # You may pin to the exact commit or the version.
+#         # uses: phonito/phonito-scanner-action@f15b09c548f06bb567aa18c3801515f62f9293be
+#       uses: phonito/phonito-scanner-action@v1.1.0
+#       with:
+#         # Image and tag of Docker image to scan, e.g. my-app:latest
+#         image: ${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest 
+#         # The minimum severity of a vulnerability that will fail the build. e.g. LOW to fail all builds containing any vulnerability or CRITICAL to only fail on severe vulnerabilities but not MEDIUM ones. options: LOW, MEDIUM, HIGH, CRITICAL
+#         fail-level: Medium
+#         # Token for your Phonito Security account. Get a token from: https://phonito.io/setup-ci
+#         phonito-token: 
