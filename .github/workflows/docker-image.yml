@@ -53,7 +53,7 @@ jobs:
         # Set to false to avoid failing based on severity-cutoff. Default is to fail when severity-cutoff is reached (or surpassed)
         fail-build: false
         # Set the output parameter after successful action execution. Valid choices are "json", "sarif", and "table".
-        output-format: table
+        output-format: json
         # Optionally specify the minimum vulnerability severity to trigger an "error" level ACS result.  Valid choices are "negligible", "low", "medium", "high" and "critical".  Any vulnerability with a severity less than this value will lead to a "warning" result.  Default is "medium".
         severity-cutoff: # optional, default is medium
         # Specify whether to only report vulnerabilities that have a fix available.  Default is false.
@@ -73,9 +73,7 @@ jobs:
       uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
       with:
           image-ref: '${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest'
-          format: 'template'
-          
-          output: 'trivy-results.sarif'
+          format: 'json'
           severity: 'CRITICAL,HIGH'
       continue-on-error: true   
         
