@@ -1,7 +1,7 @@
 name: Build and push Docker image
 
 on:
-  pull_request:
+  push:
     branches: [ test_github_actions ]
     
    
