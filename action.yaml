@@ -4,13 +4,9 @@ on:
   push:
     branches: [ test_github_actions ]
 
-
-
-jobs:
-  checkout code and login to docker:
-    runs-on: ubuntu-latest
-
-    steps:
+runs:
+  runs-on: ubuntu-latest
+  steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
