@@ -5,6 +5,7 @@ on:
     branches: [ test_github_actions ]
 
 runs:
+  using: docker
   steps:
     - name: Checkout code
       uses: actions/checkout@v2
